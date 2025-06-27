@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My travel affairs
+        </title>
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+        <header id="sticky-header">
+            <div class="search-bar-container">
+                <input type="text" placeholder="Search">
+            </div>
+        </header>
+        <section class="hero">
+            <video autoplay muted loop class="background-video">
+                <source src="vids/home_top.mp4" type="video/mp4" />
+            </video>    
+            <div class="overlay">
+                <div class="search-bar-container">
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div style="height: 1200px; background: #f2f2f2;">
+            <h2 style="padding: 20px;">Scroll down content</h2>
+            </div>
+        </section>
+        <script>
+            const stickyHeader = document.getElementById("sticky-header");
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > window.innerHeight * 0.6) {
+                stickyHeader.style.display = "block";
+                } else {
+                stickyHeader.style.display = "none";
+                }
+            });
+        </script>
+    </body>
+</html>
