@@ -7,34 +7,99 @@
         <link rel="stylesheet" href="home.css">
     </head>
     <body>
-        <header id="sticky-header">
+        <header id="sticky-search">
             <div class="search-bar-container">
                 <input type="text" placeholder="Search">
             </div>
         </header>
-        <section class="hero">
+        <section class="main">
             <video autoplay muted loop class="background-video">
                 <source src="vids/home_top.mp4" type="video/mp4" />
             </video>    
             <div class="overlay">
-                <div class="search-bar-container">
-                    <input type="text" placeholder="Search">
+                <div class="search-wrapper">
+                    <div class="search-bar-container active-search">
+                    <input type="text" id="search-bar" placeholder="Search">
+                    </div>
+                    <div class="recommendations" id="recommendations">
+                    <!-- Example recommendations -->
+                    <p>Popular: Japan, Bali, Paris</p>
+                    </div>
                 </div>
             </div>
         </section>
         <section class="content">
-            <div style="height: 1200px; background: #f2f2f2;">
-            <h2 style="padding: 20px;">Scroll down content</h2>
-            </div>
         </section>
         <script>
-            const stickyHeader = document.getElementById("sticky-header");
+            const stickyHeader = document.getElementById("sticky-search");
 
             window.addEventListener("scroll", () => {
                 if (window.scrollY > window.innerHeight * 0.6) {
                 stickyHeader.style.display = "block";
                 } else {
                 stickyHeader.style.display = "none";
+                }
+            });
+        </script>
+        <div class="tile-container">
+        <div class="tile">
+            <div class="tile-image" style="background-image: url('img/Japan.jpeg');"></div>
+            <div class="tile-content">
+            <h2 class="tile-title">Japan</h2>
+            <p class="tile-description">Short description for tile one.</p>
+            </div>
+        </div>
+
+        <div class="tile">
+            <div class="tile-image" style="background-image: url('img/Malaysia.jpeg');"></div>
+            <div class="tile-content">
+            <h2 class="tile-title">Malaysia</h2>
+            <p class="tile-description">description</p>
+            </div>
+        </div>
+        <div class="tile">
+            <div class="tile-image" style="background-image: url('img/Korea.jpeg');"></div>
+            <div class="tile-content">
+            <h2 class="tile-title">Korea</h2>
+            <p class="tile-description">Another short description for tile two.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <div class="tile-image" style="background-image: url('img/Bali.jpeg');"></div>
+            <div class="tile-content">
+            <h2 class="tile-title">Bali</h2>
+            <p class="tile-description">Another short description for tile two.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <div class="tile-image" style="background-image: url('image2.jpg');"></div>
+            <div class="tile-content">
+            <h2 class="tile-title">Title Two</h2>
+            <p class="tile-description">Another short description for tile two.</p>
+            </div>
+        </div>
+        <div class="tile">
+            <div class="tile-image" style="background-image: url('image2.jpg');"></div>
+            <div class="tile-content">
+            <h2 class="tile-title">Title Two</h2>
+            <p class="tile-description">Another short description for tile two.</p>
+            </div>
+        </div>
+        </div>
+        <script>
+            const searchBar = document.getElementById("search-bar");
+            const searchContainer = document.querySelector(".active-search");
+            const recommendations = document.getElementById("recommendations");
+
+            searchBar.addEventListener("focus", () => {
+                searchContainer.classList.add("focused");
+                recommendations.classList.add("visible");
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!searchContainer.contains(e.target)) {
+                searchContainer.classList.remove("focused");
+                recommendations.classList.remove("visible");
                 }
             });
         </script>
