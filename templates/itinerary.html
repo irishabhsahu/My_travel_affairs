@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ country_name }} Itinerary Planner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/colors.css') }}">
+</head>
+<body>
+  <div class="hero" id="heroSection" style="background-image: url('{{ country_img }}');">
+    <h1 id="countryTitle">{{ country_name }}</h1>
+  </div>
+
+  <div class="container">
+    <h2>Suggested Cities</h2>
+    <div class="city-list" id="cityList"></div>
+
+    <h2>Your Itinerary</h2>
+    <table class="itinerary">
+      <thead>
+        <tr><th>Day</th><th>Morning</th><th>Afternoon</th><th>Evening</th></tr>
+      </thead>
+      <tbody id="itineraryBody"></tbody>
+    </table>
+    <button class="add-day-btn" onclick="addDay()">➕ Add Another Day</button>
+
+    <div class="popular-section">
+      <h2>Popular Choices</h2>
+      <div class="popular-list" id="popularList"></div>
+    </div>
+  </div>
+
+  <div id="snackbar">All the days are already occupied!</div>
+
+<script>
+  const destinations = {{ destinations_json | safe }};
+  const popularChoices = {{ popular_choices_json | safe }};
+
+  let currentCountry = destinations.find(d => d.name === "{{ country_name }}");
+  const cityList = document.getElementById("cityList");
+  const itineraryBody = document.getElementById("itineraryBody");
+  const popularList = document.getElementById("popularList");
+
+  function showCityButtons() {
+    cityList.innerHTML = "";
+    currentCountry.cities.forEach(city => {
+      const btn = document.createElement("button");
+      btn.textContent = city;
+      btn.onclick = () => addActivity(city);
+      cityList.appendChild(btn);
+    });
+  }
+
+  function renderItinerary() {
+    itineraryBody.innerHTML = "";
+    currentCountry.itinerary.forEach((dayData, index) => {
+      const row = document.createElement("tr");
+      const dayNumber = index + 1;
+
+      let dayCell = `<td style="position:relative;">
+                       Day ${dayNumber}
+                       <button class="remove-btn" onclick="removeDay(${index})">×</button>
+                     </td>`;
+      let morningCell = `<td>${dayData.morning || ""}</td>`;
+      let afternoonCell = `<td>${dayData.afternoon || ""}</td>`;
+      let eveningCell = `<td>${dayData.evening || ""}</td>`;
+
+      row.innerHTML = `${dayCell}${morningCell}${afternoonCell}${eveningCell}`;
+      itineraryBody.appendChild(row);
+    });
+  }
+
+  function addDay() {
+    currentCountry.itinerary.push({});
+    renderItinerary();
+  }
+
+  function removeDay(index) {
+    currentCountry.itinerary.splice(index, 1);
+    renderItinerary();
+  }
+
+  function addActivity(city) {
+    let placed = false;
+    for (let i = 0; i < currentCountry.itinerary.length; i++) {
+      const day = currentCountry.itinerary[i];
+      if (!day.morning) { day.morning = city; placed = true; break; }
+      else if (!day.afternoon) { day.afternoon = city; placed = true; break; }
+      else if (!day.evening) { day.evening = city; placed = true; break; }
+    }
+    if (!placed) showSnackbar();
+    renderItinerary();
+  }
+
+  function showSnackbar() {
+    const sb = document.getElementById("snackbar");
+    sb.className = "show";
+    setTimeout(() => { sb.className = sb.className.replace("show", ""); }, 2500);
+  }
+
+function renderPopularChoices() {
+    popularList.innerHTML = "";
+    popularChoices.forEach(name => {
+        const country = destinations.find(d => d.name === name);
+        if (!country) return;
+
+        const card = document.createElement("div");
+        card.className = "popular-card";
+        card.innerHTML = `
+            <div class="card-image" style="background-image: url('${country.img}');"></div>
+            <div class="card-title">${country.name}</div>
+        `;
+        card.onclick = () => window.location.href = `/itinerary/${country.name}`;
+        popularList.appendChild(card);
+    });
+}
+
+  // Initial render
+  showCityButtons();
+  renderItinerary();
+  renderPopularChoices();
+</script>
+</body>
+</html>

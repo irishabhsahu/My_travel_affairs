@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Results - My Travel Affairs</title>
+  <link rel="stylesheet" href="home.css" />
+  <style>
+    .search-results-container {
+      background-color: #17252A;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .search-header {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #DEF2F1;
+    }
+    
+    .search-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #3AAFA9;
+    }
+    
+    .search-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .no-results {
+      text-align: center;
+      color: #DEF2F1;
+      font-size: 1.2rem;
+      padding: 40px;
+    }
+    
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .tag {
+      background-color: #3AAFA9;
+      color: #17252A;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      background-color: #3AAFA9;
+      color: #17252A;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background-color: #DEF2F1;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-results-container">
+    <a href="home.html" class="back-btn">← Back to Home</a>
+    
+    <div class="search-header">
+      <h1>Search Results</h1>
+      <p id="search-query-display"></p>
+    </div>
+    
+    <div class="tile-container" id="search-results"></div>
+  </div>
+
+  <script>
+    const destinations = [
+      {
+        name: "Japan",
+        image: "img/Japan.jpeg",
+        tags: ["asia", "culture", "technology", "temples", "cherry blossoms"],
+        description: "Experience the perfect blend of ancient traditions and cutting-edge technology."
+      },
+      {
+        name: "Malaysia",
+        image: "img/Malaysia.jpeg",
+        tags: ["asia", "beach", "nature", "diverse culture", "food"],
+        description: "A melting pot of cultures with stunning beaches and delicious cuisine."
+      },
+      {
+        name: "Korea",
+        image: "img/Korea.jpeg",
+        tags: ["asia", "culture", "technology", "traditional", "food"],
+        description: "From ancient palaces to modern K-pop culture, Korea offers it all."
+      },
+      {
+        name: "Bali",
+        image: "img/Bali.jpeg",
+        tags: ["asia", "beach", "spiritual", "nature", "relaxation"],
+        description: "A tropical paradise perfect for spiritual retreats and beach relaxation."
+      },
+      {
+        name: "Oman",
+        image: "img/oman.jpeg",
+        tags: ["middle east", "desert", "arabian sea", "culture", "adventure"],
+        description: "Secrets of the desert unfold by the Arabian Sea."
+      },
+      {
+        name: "Greece",
+        image: "img/greece.jpeg",
+        tags: ["europe", "romance", "islands", "history", "mediterranean"],
+        description: "Whitewashed romance under a Santorini sunset."
+      },
+      {
+        name: "Maldives",
+        image: "img/maldives.jpg",
+        tags: ["islands", "luxury", "beach", "romance", "overwater villas"],
+        description: "Where love floats in overwater villas."
+      },
+      {
+        name: "Italy",
+        image: "img/italy.jpg",
+        tags: ["europe", "romance", "culture", "food", "history"],
+        description: "A gondola for two in the city of love."
+      },
+      {
+        name: "Switzerland",
+        image: "img/switzerland.jpg",
+        tags: ["europe", "mountains", "alpine", "adventure", "scenic"],
+        description: "Snowy kisses and mountain cuddles."
+      },
+      {
+        name: "Sri Lanka",
+        image: "img/srilanka.jpeg",
+        tags: ["asia", "beach", "tea", "temples", "culture"],
+        description: "Waves, tea trails, and temples of peace."
+      },
+      {
+        name: "Nepal",
+        image: "img/nepal.jpeg",
+        tags: ["asia", "mountains", "himalayas", "adventure", "spiritual"],
+        description: "Touch the sky or find peace below it."
+      },
+      {
+        name: "Bhutan",
+        image: "img/bhutan.jpeg",
+        tags: ["asia", "himalayas", "culture", "happiness", "monasteries"],
+        description: "Gross happiness guaranteed."
+      },
+      {
+        name: "Dubai",
+        image: "img/dubai.jpeg",
+        tags: ["middle east", "luxury", "desert", "modern", "shopping"],
+        description: "Desert luxury, 4 hours away."
+      },
+      {
+        name: "France",
+        image: "img/france.jpeg",
+        tags: ["europe", "romance", "culture", "art", "fashion"],
+        description: "Fall in love all over again under the Parisian sky."
+      },
+      {
+        name: "Spain",
+        image: "img/spain.jpeg",
+        tags: ["europe", "culture", "food", "flamenco", "fiesta"],
+        description: "Fiesta, flamenco, and food that sings."
+      },
+      {
+        name: "Netherlands",
+        image: "img/netherlands.jpeg",
+        tags: ["europe", "canals", "tulips", "cycling", "culture"],
+        description: "Bike past tulips and timeless canals."
+      },
+      {
+        name: "Austria",
+        image: "img/austria.jpeg",
+        tags: ["europe", "alpine", "music", "imperial", "mountains"],
+        description: "A waltz through imperial cities and alpine air."
+      },
+      {
+        name: "Mauritius",
+        image: "img/mauritius.jpeg",
+        tags: ["islands", "beach", "coral", "culture", "tropical"],
+        description: "A lush escape wrapped in coral and culture."
+      },
+      {
+        name: "Thailand",
+        image: "img/thailand.jpeg",
+        tags: ["asia", "beach", "temples", "nightlife", "culture"],
+        description: "Temples at dawn, parties at dusk, paradise always."
+      },
+      {
+        name: "Seychelles",
+        image: "img/seychelles.jpeg",
+        tags: ["islands", "beach", "luxury", "tropical", "pristine"],
+        description: "Barefoot bliss on the world's purest sands."
+      },
+      {
+        name: "Qatar",
+        image: "img/qatar.jpeg",
+        tags: ["middle east", "modern", "luxury", "culture", "desert"],
+        description: "Tradition wrapped in modern brilliance."
+      },
+      {
+        name: "Jordan",
+        image: "img/jordan.jpeg",
+        tags: ["middle east", "history", "petra", "desert", "ancient"],
+        description: "Walk the path of ancient kings in Petra's glow."
+      },
+      {
+        name: "Saudi Arabia",
+        image: "img/saudi_arabia.jpeg",
+        tags: ["middle east", "desert", "islamic", "culture", "ancient"],
+        description: "The desert opens to ancient Nabatean wonders."
+      },
+      {
+        name: "Morocco",
+        image: "img/morocco.jpeg",
+        tags: ["africa", "desert", "medina", "culture", "sahara"],
+        description: "Lose yourself in medinas, mint tea, and the magic of the Sahara."
+      },
+      {
+        name: "Egypt",
+        image: "img/egypt.jpeg",
+        tags: ["africa", "pyramids", "nile", "history", "ancient"],
+        description: "Timeless pyramids, desert mystique, and Nile-side wonders."
+      },
+      {
+        name: "Bahrain",
+        image: "img/bahrain.jpeg",
+        tags: ["middle east", "island", "luxury", "culture", "desert"],
+        description: "Island charm with desert luxury vibes."
+      },
+      {
+        name: "Kuwait",
+        image: "img/kuwait.jpeg",
+        tags: ["middle east", "modern", "luxury", "oil", "culture"],
+        description: "Small, sleek, and soaked in oil-rich heritage."
+      },
+      {
+        name: "Tunisia",
+        image: "img/tunisia.jpeg",
+        tags: ["africa", "mediterranean", "desert", "culture", "history"],
+        description: "Saharan sands to Mediterranean charm, all in one."
+      },
+      {
+        name: "Scotland",
+        image: "img/scotland.jpeg",
+        tags: ["europe", "highlands", "lochs", "culture", "adventure"],
+        description: "Mystic lochs and highland legends await."
+      },
+      {
+        name: "Iceland",
+        image: "img/iceland.jpeg",
+        tags: ["europe", "volcanoes", "waterfalls", "northern lights", "adventure"],
+        description: "Volcanoes, waterfalls, and fire-meets-ice beauty."
+      },
+      {
+        name: "Finland",
+        image: "img/finland.jpeg",
+        tags: ["europe", "northern lights", "snow", "nature", "serenity"],
+        description: "Northern lights and snow-covered serenity."
+      },
+      {
+        name: "Slovenia",
+        image: "img/slovenia.jpeg",
+        tags: ["europe", "balkans", "lakes", "nature", "fairytale"],
+        description: "Hidden lakes and green fairytales from the Balkans."
+      },
+      {
+        name: "South Africa",
+        image: "img/south_africa.jpeg",
+        tags: ["africa", "safari", "coastline", "nature", "adventure"],
+        description: "Where coastlines, cliffs, and safaris collide."
+      },
+      {
+        name: "Chile",
+        image: "img/chile.jpeg",
+        tags: ["south america", "nature", "mountains", "adventure", "wilderness"],
+        description: "At the edge of the world, nature roars in silence."
+      },
+      {
+        name: "Georgia",
+        image: "img/georgia.jpeg",
+        tags: ["europe", "caucasus", "wine", "wilderness", "culture"],
+        description: "A wild Caucasus tale written in wine and wilderness."
+      },
+      {
+        name: "Tanzania",
+        image: "img/tanzania.jpeg",
+        tags: ["africa", "safari", "kilimanjaro", "serengeti", "wildlife"],
+        description: "Serengeti sunsets and Kilimanjaro skies."
+      },
+      {
+        name: "Singapore",
+        image: "img/singapore.jpg",
+        tags: ["asia", "modern", "city", "culture", "food"],
+        description: "A modern city-state with diverse culture and amazing food."
+      }
+    ];
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const searchQuery = queryParams.get("q")?.toLowerCase() || "";
+
+    // Display search query
+    document.getElementById("search-query-display").textContent = 
+      searchQuery ? `Results for: "${searchQuery}"` : "All destinations";
+
+    const filtered = destinations.filter(dest => {
+      const nameMatch = dest.name.toLowerCase().includes(searchQuery);
+      const tagMatch = dest.tags.some(tag => tag.toLowerCase().includes(searchQuery));
+      const descMatch = dest.description.toLowerCase().includes(searchQuery);
+      return nameMatch || tagMatch || descMatch;
+    });
+
+    const container = document.getElementById("search-results");
+    
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div class="no-results">
+          <h2>No destinations found</h2>
+          <p>Try searching for different keywords like: Japan, Bali, Beach, Culture, Asia</p>
+        </div>
+      `;
+    } else {
+      container.innerHTML = filtered.map(dest => `
+        <div class="tile">
+          <div class="tile-image" style="background-image: url('${dest.image}');"></div>
+          <div class="tile-content">
+            <h2 class="tile-title">${dest.name}</h2>
+            <p class="tile-description">${dest.description}</p>
+            <div class="tags-container">
+              ${dest.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
