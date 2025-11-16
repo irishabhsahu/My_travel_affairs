@@ -8,15 +8,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-                 <header id="sticky-search">
-             <div class="search-bar-container">
-                 <input type="text" id="search-bar-sticky" placeholder="Search">
-             </div>
-         </header>
+        <header id="sticky-search">
+            <div class="sticky-left-logos">
+                <img src="{{ url_for('static', filename='img/mva-logo.png') }}" class="sticky-logo">
+                <img src="{{ url_for('static', filename='img/mva-text.png') }}" class="sticky-text">
+            </div>
+            <div class="search-bar-container">
+                <input type="text" id="search-bar-sticky" placeholder="Search">
+            </div>
+        </header>
         <section class="main">
             <video autoplay muted loop>
                 <source src="{{ url_for('static', filename='vids/home_top.mp4') }}" type="video/mp4">
             </video>
+            <div class="logo-top-left">
+                <img src="{{ url_for('static', filename='img/mva.png') }}" class="mva-logo" alt="MVA Logo">
+            </div>
             <div class="overlay">
                 <div class="search-wrapper" data-search-url="{{ url_for('search') }}">
                     <div class="search-bar-container active-search">
@@ -439,7 +446,9 @@
         </div>
 
         <!-- Sign-In Button -->
-        <button id="openModalBtn" class="signin-btn">Sign In</button>
+        <button id="openModalBtn" class="signin-btn">
+            <img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp">
+        </button>
         
         <script>
             const modal = document.getElementById('signinModal');

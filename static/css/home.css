@@ -18,7 +18,7 @@ html, body
 .main
 {
   position: relative;
-  height: 80vh;
+  height: 50vh;
   overflow: hidden;
 }
 
@@ -1089,12 +1089,19 @@ html, body
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #3AAFA9;
+  background: #25D366;
   color: #fff;
   border: none;
-  padding: 10px 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.signin-btn img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
 }
 
 #popularChoices {
@@ -1221,4 +1228,41 @@ html, body
     align-items: center;
     font-weight: bold;
     text-align: center;
+}
+
+.main {
+  position: relative;
+}
+
+.logo-top-left {
+  position: absolute;
+  top: 5px;
+  left: -10px;
+  z-index: 999;              /* ensures it stays above video */
+}
+
+.mva-logo {
+  height: 100px;              /* change size here */
+  width: auto;
+}
+
+.sticky-left-logos {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sticky-logo {
+  height: 60px;
+  width: auto;
+}
+
+.sticky-text {
+  position: relative;
+  top: -40px;
+  left: -40px;
+  height: 140px;
+  width: auto;
 }
