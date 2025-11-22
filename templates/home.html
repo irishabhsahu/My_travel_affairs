@@ -86,131 +86,208 @@
         }
         </script>
         
-        <div class="tile-container">
-            <a href="{{ url_for('itinerary', country='Japan') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Japan.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Japan</h2>
-                    <p class="tile-description">Cherry blossoms, ancient temples, and cutting-edge technology</p>
-                </div>
-            </a>
-            <a href="{{ url_for('itinerary', country='Malaysia') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Malaysia.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Malaysia</h2>
-                    <p class="tile-description">Twin towers, tropical rainforests, and diverse cultural heritage</p>
-                </div>
-            </a>
-            <a href="{{ url_for('itinerary', country='Korea') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Korea.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Korea</h2>
-                    <p class="tile-description">K-pop culture, traditional palaces, and world-class cuisine</p>
-                </div>
-            </a>
-            <div class="tile">
-            <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Bali.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Bali</h2>
-                    <p class="tile-description">Sacred temples, pristine beaches, and spiritual tranquility</p>
-                </div>
-            </div>
-            <a href="{{ url_for('itinerary', country='Oman') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/oman.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Oman</h2>
-                    <p class="tile-description">Desert adventures, ancient forts, and Arabian Sea beauty</p>
-                </div>
-            </a>
-            <a href="{{ url_for('itinerary', country='Greece') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/greece.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Greece</h2>
-                    <p class="tile-description">Island paradise, ancient mythology, and Mediterranean charm</p>
-                </div>
-            </a>
-        </div>
+        <h1 class="center-heading">Trending Destinations</h1>
 
-        <div class="honeymoon-container">
-            <div class="honeymoon-header">
-                <h2>Honeymoon Hideouts</h2>
-            </div>
-            <div class="honeymoon-tiles">
-                <div class="honeymoon-tile">
-                    <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/maldives.jpg') }}');"></div>
-                    <div class="honeymoon-content">
-                        <h3 class="honeymoon-title">Maldives</h3>
-                        <p class="honeymoon-tagline">"Where love floats in overwater villas"</p>
-                    </div>
-                </div>
-                <div class="honeymoon-tile">
-                    <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/bali(honeymoon).jpeg') }}');"></div>
-                    <div class="honeymoon-content">
-                        <h3 class="honeymoon-title">Bali</h3>
-                        <p class="honeymoon-tagline">"Sacred forests, beach sunsets, and hearts in sync"</p>
-                    </div>
-                </div>
-                <a href="{{ url_for('itinerary', country='Greece') }}" class="honeymoon-tile">
-                    <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/greece.jpeg') }}');"></div>
-                    <div class="honeymoon-content">
-                        <h3 class="honeymoon-title">Greece</h3>
-                        <p class="honeymoon-tagline">"Whitewashed romance under a Santorini sunset"</p>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn left" onclick="scrollTiles(-1)">&#10094;</button>
+
+            <div class="tile-container">
+                <!-- Japan -->
+                <a href="{{ url_for('itinerary', country='Japan') }}" class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Japan.jpeg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Japan</h2>
+                        <p class="tile-description">Cherry blossoms, ancient temples, and cutting-edge technology</p>
                     </div>
                 </a>
-                <div class="honeymoon-tile">
-                    <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/italy.jpg') }}');"></div>
-                    <div class="honeymoon-content">
-                        <h3 class="honeymoon-title">Italy</h3>
-                        <p class="honeymoon-tagline">"A gondola for two in the city of love"</p>
+
+                <!-- Thailand -->
+                <a href="{{ url_for('itinerary', country='Thailand') }}" class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/thailand.jpeg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Thailand</h2>
+                        <p class="tile-description">Golden temples, vibrant street markets, and serene island beaches</p>
+                    </div>
+                </a>
+
+                <!-- Dubai -->
+                <a href="{{ url_for('itinerary', country='Dubai') }}" class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/dubai.jpeg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Dubai</h2>
+                        <p class="tile-description">Futuristic skyscrapers, luxury shopping, and vast desert landscapes</p>
+                    </div>
+                </a>
+
+                <!-- Bali -->
+                <div class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Bali.jpeg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Bali</h2>
+                        <p class="tile-description">Sacred temples, pristine beaches, and spiritual tranquility</p>
                     </div>
                 </div>
-                <div class="honeymoon-tile">
-                    <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/switzerland.jpg') }}');"></div>
-                    <div class="honeymoon-content">
-                        <h3 class="honeymoon-title">Switzerland</h3>
-                        <p class="honeymoon-tagline">"Snowy kisses and mountain cuddles"</p>
+
+                <!-- Singapore -->
+                <a href="{{ url_for('itinerary', country='Singapore') }}" class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/singapore3.jpg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Singapore</h2>
+                        <p class="tile-description">Urban gardens, futuristic architecture, and rich multicultural flavors</p>
+                    </div>
+                </a>
+
+                <!-- Sri Lanka -->
+                <a href="{{ url_for('itinerary', country='SriLanka') }}" class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/srilanka.jpeg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Sri Lanka</h2>
+                        <p class="tile-description">Sacred temples, lush tea plantations, and pristine coastal shores</p>
+                    </div>
+                </a>
+
+                <!-- Vietnam -->
+                <a href="{{ url_for('itinerary', country='Vietnam') }}" class="tile">
+                    <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/vietnam.jpg') }}');"></div>
+                    <div class="tile-content">
+                        <h2 class="tile-title">Vietnam</h2>
+                        <p class="tile-description">Scenic rice terraces, ancient towns, and flavorful street food</p>
+                    </div>
+                </a>
+
+            </div>
+
+        <button class="scroll-btn right" onclick="scrollTiles(1)">&#10095;</button>
+        </div>
+        <div class="honeymoon-wrapper">
+
+            <!-- Scroll Buttons -->
+            <button class="honeymoon-scroll-btn left" onclick="scrollHoneymoon(-1)">&#10094;</button>
+            <button class="honeymoon-scroll-btn right" onclick="scrollHoneymoon(1)">&#10095;</button>
+
+            <div class="honeymoon-container">
+                <div class="honeymoon-header">
+                    <h2>Honeymoon Hideouts</h2>
+                </div>
+
+                <div class="honeymoon-tiles">
+                    <div class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/maldives.jpg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Maldives</h3>
+                            <p class="honeymoon-tagline">"Where love floats in overwater villas"</p>
+                        </div>
+                    </div>
+
+                    <div class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/bali(honeymoon).jpeg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Bali</h3>
+                            <p class="honeymoon-tagline">"Sacred forests, beach sunsets, and hearts in sync"</p>
+                        </div>
+                    </div>
+
+                    <a href="{{ url_for('itinerary', country='Greece') }}" class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/greece.jpeg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Greece</h3>
+                            <p class="honeymoon-tagline">"Whitewashed romance under a Santorini sunset"</p>
+                        </div>
+                    </a>
+
+                    <div class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/italy.jpg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Italy</h3>
+                            <p class="honeymoon-tagline">"A gondola for two in the city of love"</p>
+                        </div>
+                    </div>
+
+                    <div class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/switzerland.jpg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Switzerland</h3>
+                            <p class="honeymoon-tagline">"Snowy kisses and mountain cuddles"</p>
+                        </div>
+                    </div>
+
+                    <div class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/thailand2.jpeg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Thailand</h3>
+                            <p class="honeymoon-tagline">“Sunset whispers and island hideaways”</p>
+                        </div>
+                    </div>
+
+                    <div class="honeymoon-tile">
+                        <div class="honeymoon-image" style="background-image: url('{{ url_for('static', filename='img/mauritius.jpeg') }}');"></div>
+                        <div class="honeymoon-content">
+                            <h3 class="honeymoon-title">Mauritius</h3>
+                            <p class="honeymoon-tagline">“Turquoise dreams and barefoot paradise moments”</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+       <div class="scroll-section adventure-container">
+    <div class="scroll-header"><h2>Quick Escapes</h2></div>
 
-        <div class="adventure-container">
-            <div class="adventure-header">
-                <h2>Quick Escapes</h2>
-            </div>
-            <div class="adventure-tiles">
-                <div class="adventure-tile">
-                    <div class="adventure-image" style="background-image: url('{{ url_for('static', filename='img/srilanka.jpeg') }}');"></div>
-                    <div class="adventure-content">
-                        <h3 class="adventure-title">Sri Lanka</h3>
-                        <p class="adventure-tagline">"Waves, tea trails, and temples of peace"</p>
-                    </div>
-                </div>
-                <div class="adventure-tile">
-                    <div class="adventure-image" style="background-image: url('{{ url_for('static', filename='img/nepal.jpeg') }}');"></div>
+    <div class="scroll-wrapper">
+        <button class="scroll-btn left" onclick="scrollTiles('quickEscapes', -1)">&#8592;</button>
 
-                    <div class="adventure-content">
-                        <h3 class="adventure-title">Nepal</h3>
-                        <p class="adventure-tagline">"Touch the sky or find peace below it"</p>
+                <div class="scroll-tiles" id="quickEscapes">
+                    <div class="scroll-tile">
+                        <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/srilanka.jpeg') }}');"></div>
+                        <div class="scroll-content">
+                            <div class="scroll-title">Sri Lanka</div>
+                            <div class="scroll-tagline">"Waves, tea trails, and temples of peace"</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-tile">
+                        <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/nepal.jpeg') }}');"></div>
+                        <div class="scroll-content">
+                            <div class="scroll-title">Nepal</div>
+                            <div class="scroll-tagline">"Touch the sky or find peace below it"</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-tile">
+                        <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/thailand3.jpeg') }}');"></div>
+                        <div class="scroll-content">
+                            <div class="scroll-title">Thailand</div>
+                            <div class="scroll-tagline">"Gross happiness guaranteed"</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-tile">
+                        <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/dubai.jpeg') }}');"></div>
+                        <div class="scroll-content">
+                            <div class="scroll-title">Dubai (UAE)</div>
+                            <div class="scroll-tagline">"Desert luxury, 4 hours away"</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-tile">
+                        <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/singapore4.jpg') }}');"></div>
+                        <div class="scroll-content">
+                            <div class="scroll-title">Singapore</div>
+                            <div class="scroll-tagline">"Clean, green, and impossibly futuristic"</div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-tile">
+                        <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/vietnam2.jpeg') }}');"></div>
+                        <div class="scroll-content">
+                            <div class="scroll-title">Vietnam</div>
+                            <div class="scroll-tagline">"Street food, serene bays, unforgettable culture"</div>
+                        </div>
                     </div>
                 </div>
-                <div class="adventure-tile">
-                    <div class="adventure-image" style="background-image: url('{{ url_for('static', filename='img/bhutan.jpeg') }}');"></div>
-                    <div class="adventure-content">
-                        <h3 class="adventure-title">Bhutan</h3>
-                        <p class="adventure-tagline">"Gross happiness guaranteed"</p>
-                    </div>
-                </div>
-                <div class="adventure-tile">
-                    <div class="adventure-image" style="background-image: url('{{ url_for('static', filename='img/dubai.jpeg') }}');"></div>
-                    <div class="adventure-content">
-                        <h3 class="adventure-title">Dubai (UAE)</h3>
-                        <p class="adventure-tagline">"Desert luxury, 4 hours away"</p>
-                    </div>
-                </div>
+
+                <button class="scroll-btn right" onclick="scrollTiles('quickEscapes', 1)">&#8594;</button>
             </div>
         </div>
-
         <!-- Euro Delights -->
         <div class="scroll-section euro-delights-container">
             <div class="scroll-header"><h2>Euro Delights</h2></div>
@@ -267,7 +344,7 @@
                 <div class="scroll-tiles" id="desertDazzle">
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/qatar.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Qatar</div><div class="scroll-tagline">"Tradition wrapped in modern brilliance"</div></div></div>
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/jordan.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Jordan</div><div class="scroll-tagline">"Walk the path of ancient kings in Petra’s glow"</div></div></div>
-                    <a href="{{ url_for('itinerary', country='Oman') }}" class="scroll-tile"><div class="scroll-content"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/oman.jpeg') }}');"></div><div class="scroll-title">Oman</div><div class="scroll-tagline">"Secrets of the desert unfold by the Arabian Sea"</div></div></a>
+                    <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/oman.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Oman</div><div class="scroll-tagline">"Secrets of the desert unfold by the Arabian Sea"</div></div></div>
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/saudi_arabia.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Saudi Arabia</div><div class="scroll-tagline">"The desert opens to ancient Nabatean wonders"</div></div></div>
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/morocco.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Morocco</div><div class="scroll-tagline">"Lose yourself in medinas, mint tea, and the magic of the Sahara"</div></div></div>
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/egypt.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Egypt</div><div class="scroll-tagline">"Timeless pyramids, desert mystique, and Nile-side wonders"</div></div></div>
@@ -293,43 +370,35 @@
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/south_africa.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">South Africa</div><div class="scroll-tagline">"Where coastlines, cliffs, and safaris collide"</div></div></div>
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/chile.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Chile</div><div class="scroll-tagline">"At the edge of the world, nature roars in silence"</div></div></div>
                     <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/georgia.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Georgia</div><div class="scroll-tagline">"A wild Caucasus tale written in wine and wilderness"</div></div></div>
-                    <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/tanzania.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Tanzania</div><div class="scroll-tagline">"Serengeti sunsets and Kilimanjaro skies"</div></div></div>
+                    <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/azerbaijan.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Azerbaizan</div><div class="scroll-tagline">"Clean, green, and impossibly futuristic"</p></div></div></div>
+                    <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/kenya.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">Kenya</div><div class="scroll-tagline">“Where the wild runs free”</p></div></div></div>
+                    <div class="scroll-tile"><div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/southafrica.jpeg') }}');"></div><div class="scroll-content"><div class="scroll-title">South-Africa</div><div class="scroll-tagline">"Secrets of the desert unfold by the Arabian Sea"</p></div></div></div>
             </div>
                 <button class="scroll-btn right" onclick="scrollTiles('scenicStories', 1)">&#8594;</button>
                 </div>
         </div>        <div class="tile-container_2 improved-budget-options">
             <div class="budget-header">
-                <h2>Budget Options</h2>
-                <p>Explore affordable destinations for your next adventure!</p>
+                <h2>Explore the wildlife</h2>
+                <p>Step into the wild, leave with a story.</p>
             </div>
             <a href="{{ url_for('itinerary', country='Malaysia') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Malaysia.jpeg') }}');"></div>
+                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/tanzania.jpeg') }}');"></div>
                 <div class="tile-content">
-                    <h2 class="tile-title">Malaysia</h2>
-                    <p class="tile-rate">From ₹75,000</p>
+                    <h2 class="tile-title">Tanzania</h2>
                 </div>
             </a>
             <div class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Bali.jpeg') }}');"></div>
+                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/southafricawildlife.jpeg') }}');"></div>
                 <div class="tile-content">
-                    <h2 class="tile-title">Bali</h2>
-                    <p class="tile-rate">From ₹80,000</p>
+                    <h2 class="tile-title">South-Africa</h2>
                 </div>
             </div>
             <div class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Korea.jpeg') }}');"></div>
+                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/kenyawildlife.jpeg') }}');"></div>
                 <div class="tile-content">
-                    <h2 class="tile-title">Korea</h2>
-                    <p class="tile-rate">From ₹1,05,0000</p>
+                    <h2 class="tile-title">Kenya</h2>
                 </div>
             </div>
-            <a href="{{ url_for('itinerary', country='Japan') }}" class="tile">
-                <div class="tile-image" style="background-image: url('{{ url_for('static', filename='img/Japan.jpeg') }}');"></div>
-                <div class="tile-content">
-                    <h2 class="tile-title">Japan</h2>
-                    <p class="tile-rate">From ₹1,20,000</p>
-                </div>
-            </a>
         </div>
 
         <div class="split-container alt-bg">
@@ -394,16 +463,10 @@
                     </div>
                     
                     <div class="contact-form">
-                        <h3>Book a callback</h3>
+                        <h3>Chat with us on WhatsApp</h3>
                         <form id="contactForm">
                             <div class="form-group">
-                                <input type="text" name="username" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" name="whatsapp" placeholder="Your WhatsApp Number" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                                <input type="text" name="WhatsApp no." placeholder="Contact number" required>
                             </div>
 
                             <!-- Hidden fields to track country & category -->
@@ -420,17 +483,8 @@
         <div id="signinModal" class="modal">
             <div class="modal-content">
                 <span class="close-btn" id="closeModal">&times;</span>
-                <h2>Sign In</h2>
+                <h2>Chat with us on WhatsApp</h2>
                 <form id="signinForm" action="/signup" method="POST">
-                <div class="form-group">
-                    <input type="text" name="username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
                 <div class="form-group">
                     <input type="tel" name="whatsapp" placeholder="WhatsApp Number" required>
                 </div>
@@ -440,7 +494,7 @@
                         <span>I want updates from MyTravelAffairs</span>
                     </label>
                 </div>
-                <button type="submit" class="submit-btn">Sign In</button>
+                <button type="submit" class="submit-btn">Submit</button>
                 </form>
             </div>
         </div>
@@ -530,6 +584,32 @@
                     submitBtn.textContent = originalText;
                 });
             });
+        </script>
+        <script>
+        function scrollTiles(direction) {
+            const container = document.querySelector('.tile-container');
+            const scrollAmount = 300;  // adjust tile jump size
+            container.scrollLeft += direction * scrollAmount;
+        }
+        </script>
+        <script>
+        function scrollHoneymoon(direction) {
+            const container = document.querySelector('.honeymoon-tiles');
+
+            const scrollAmount = 300; // px per button click
+
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        </script>
+        <script>
+            function scrollTiles(containerId, direction) {
+                const container = document.getElementById(containerId);
+                const tileWidth = container.querySelector('.scroll-tile').offsetWidth + 16;
+                container.scrollBy({ left: direction * tileWidth, behavior: 'smooth' });
+            }
         </script>
     </body>
 </html>

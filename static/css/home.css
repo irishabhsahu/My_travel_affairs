@@ -1266,3 +1266,207 @@ html, body
   height: 140px;
   width: auto;
 }
+
+/* container: single row horizontal scroll */
+.tile-container {
+  display: flex;
+  flex-wrap: nowrap;         /* do NOT wrap to next line */
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 16px;
+  padding: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* smooth touch scrolling on iOS */
+  box-sizing: border-box;
+}
+
+/* make every tile a proper flex item and block (works for <a> and <div>) */
+.tile {
+  display: flex;             /* treat tile contents as column layout */
+  flex-direction: column;
+  flex: 0 0 auto;            /* do not grow, do not shrink, width determined by min-width */
+  min-width: 260px;          /* controls how many tiles fit horizontally */
+  height: 280px;             /* uniform tile height */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
+/* if your .tile is an <a>, make sure it behaves like a block */
+.tile[href] {                 /* targets anchor tiles */
+  text-decoration: none;
+  color: inherit;
+}
+
+/* image area inside tile */
+.tile-image {
+  height: 65%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* content area */
+.tile-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* optional: hide scrollbar for cleaner look (webkit browsers) */
+.tile-container::-webkit-scrollbar {
+  height: 8px;
+}
+.tile-container::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: rgba(0,0,0,0.15);
+}
+
+/* Responsive tweak: smaller tiles on small screens */
+@media (max-width: 600px) {
+  .tile { min-width: 220px; height: 320px; }
+}
+
+.center-heading {
+    margin-top: 10px;
+    padding: 5px;
+    color: #3AAFA9;
+    text-align: center;
+    width: 100%;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    /* FORCE PERFECT CIRCLE */
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+
+    /* Visuals */
+    background: #3AAFA9;
+    color: white;
+    border: none;
+    font-size: 28px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    padding: 0 !important;  /* IMPORTANT: remove padding */
+    line-height: 1 !important; /* stops text from stretching button */
+}
+
+.scroll-btn.left {
+    left: -30px;   /* moves button further LEFT */
+}
+
+.scroll-btn.right {
+    right: -30px;  /* moves button further RIGHT */
+}
+
+/* Wrapper holds tiles + buttons */
+.honeymoon-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Scroll button styles */
+.honeymoon-scroll-btn {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+
+    background: #3AAFA9;
+    color: white;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 !important;
+    line-height: 1 !important;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+}
+
+.honeymoon-scroll-btn.left {
+    left: -5px;   /* adjust outward */
+}
+
+.honeymoon-scroll-btn.right {
+    right: -5px;  /* adjust outward */
+}
+
+.honeymoon-scroll-btn:hover {
+    background: #2d8f88;
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* ======================================= */
+/* Tiles - horizontal scroll, no snapping */
+/* ======================================= */
+.honeymoon-tiles {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    gap: 16px;
+    padding: 10px 0;
+
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar */
+.honeymoon-tiles::-webkit-scrollbar {
+    display: none;
+}
+
+.honeymoon-tile {
+    flex: 0 0 auto;
+    min-width: 250px;
+    height: 290px;
+
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+
+    text-decoration: none;
+    color: inherit;
+}
+
+.honeymoon-image {
+    height: 65%;
+    background-size: cover;
+    background-position: center;
+}
+
+.honeymoon-content {
+    padding: 10px;
+}
+
+.honeymoon-wrapper,
+.adventure-container {
+    margin: 0;
+    padding: 0;
+}
+
+.honeymoon-header h2,
+.adventure-header h2 {
+    margin: 0 0 10px 0;   /* reduce large default h2 margins */
+    padding: 0;
+}
