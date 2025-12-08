@@ -1470,3 +1470,130 @@ html, body
     margin: 0 0 10px 0;   /* reduce large default h2 margins */
     padding: 0;
 }
+
+.google-reviews-section {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    background-color: #fff8e1;
+}
+
+.gr-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.gr-scroller {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    will-change: transform;
+}
+
+.gr-track {
+    display: flex;
+    gap: 20px;
+    white-space: nowrap;
+}
+
+.gr-card {
+    flex: 0 0 320px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    display: inline-block;
+}
+
+.gr-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.gr-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.gr-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gr-rating {
+    font-size: 14px;
+    color: #fbbc04; /* Google star color */
+}
+
+.gr-text {
+    font-size: 14px;
+    line-height: 1.5rem;
+    color: #555;
+}
+
+
+/* Duplicate cloned cards automatically match originals */
+.gr-card.clone:nth-child(4) { content: attr(data-copy); }
+
+.gr-photo {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.site-footer {
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-column h3 {
+    margin-bottom: 20px;
+}
+
+.footer-link {
+    display: block;
+    margin: 6px 0;
+    text-decoration: none;
+    color:#2d8f88
+}
+
+.footer-item {
+    margin: 8px 0;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;  /* space between emoji and link */
+}
+
+.footer-item a {
+    display: inline; /* make sure the link stays inline */
+}
+
+.footer-item span.icon {
+    width: 22px;          /* fixed width */
+    display: inline-block;
+}

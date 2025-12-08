@@ -18,7 +18,7 @@
             </div>
         </header>
         <section class="main">
-            <video autoplay muted loop>
+            <video id="heroVideo" autoplay muted loop style="object-position: bottom;">
                 <source src="{{ url_for('static', filename='vids/home_top.mp4') }}" type="video/mp4">
             </video>
             <div class="logo-top-left">
@@ -294,7 +294,6 @@
             <div class="scroll-wrapper">
                 <button class="scroll-btn left" onclick="scrollTiles('euroDelights', -1)">&#8592;</button>
                 <div class="scroll-tiles" id="euroDelights">
-                    <a href="{{ url_for('itinerary', country='France') }}">
                         <div class="scroll-tile">
                             <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/france.jpeg') }}');"></div>
                             <div class="scroll-content">
@@ -302,7 +301,6 @@
                                 <div class="scroll-tagline">"Fall in love all over again under the Parisian sky"</div>
                             </div>
                         </div>
-                    </a>
                         <div class="scroll-tile">
                             <div class="scroll-image" style="background-image: url('{{ url_for('static', filename='img/italy2.jpeg') }}');"></div>
                             <div class="scroll-content">
@@ -401,83 +399,177 @@
             </div>
         </div>
 
-        <div class="split-container alt-bg">
-            <div class="split-left malaysia-tile" tabindex="0">
-                <a href="{{ url_for('itinerary', country='Malaysia') }}" class="full-tile-link"></a>
-                <video class="malaysia-video" src="{{ url_for('static', filename='vids/malaysia.MP4') }}" autoplay muted loop playsinline></video>
-                <div class="country-overlay malaysia-overlay">Malaysia</div>
-            </div>
-            <div class="split-right singapore-tile" tabindex="0">
-            <div class="singapore-image" id="singaporeImage" style="background-image: url('{{ url_for('static', filename='img/singapore.jpeg') }}');"></div>                <div class="country-overlay singapore-overlay">Singapore</div>
-            </div>
-        </div>
-        <script>
-        // Singapore image cycling
-        const singaporeImages = [
-            "{{ url_for('static', filename='img/singapore.jpg') }}",
-            "{{ url_for('static', filename='img/singapore2.jpg') }}",
-            "{{ url_for('static', filename='img/singapore3.jpg') }}",
-            "{{ url_for('static', filename='img/singapore4.jpg') }}"
-        ];
-        let singaporeIdx = 0;
-        const singaporeImageDiv = document.getElementById('singaporeImage');
-        setInterval(() => {
-            singaporeIdx = (singaporeIdx + 1) % singaporeImages.length;
-            singaporeImageDiv.style.backgroundImage = `url('${singaporeImages[singaporeIdx]}')`;
-        }, 2000);
-        </script>
+        <div class="google-reviews-section">
+                <h2 class="gr-title">What Our Travelers Say</h2>
 
+                <div class="gr-scroller" id="grScroller">
+                    <div class="gr-track">
+
+                        <!-- ---------- Review 1 ---------- -->
+                        <a href="https://share.google/22GR4IU3DkWFe18EZ" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="gr-card">
+                            <div class="gr-header">
+                                <img src="{{ url_for('static', filename='img/reviewer1.png') }}" class="gr-avatar">
+                                <div>
+                                    <div class="gr-name">shri prakash chaube</div>
+                                    <div class="gr-rating">★★★★★</div>
+                                </div>
+                            </div>
+
+                            <img class="gr-photo" src="{{ url_for('static', filename='img/review1.jpg') }}">
+
+                            <p class="gr-text">
+The tour was a truly unforgettable experience with exceptional service.
+                            </p>
+                        </div>
+                        </a>
+
+                        <!-- ---------- Review 2 ---------- -->
+                        <a href="https://share.google/VM9KqENSpTDuwoXke" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="gr-card">
+                            <div class="gr-header">
+                                <img src="{{ url_for('static', filename='img/reviewer2.png') }}" class="gr-avatar">
+                                <div>
+                                    <div class="gr-name">ANKITA SHARMA</div>
+                                    <div class="gr-rating">★★★★★</div>
+                                </div>
+                            </div>
+
+                            <img class="gr-photo" src="{{ url_for('static', filename='img/review2.jpg') }}" style="object-position: top;">
+
+                            <p class="gr-text">
+                                We booked a Family trip to Kashmir through My vacation affair-Gaurav & team and it was awesome.
+                            </p>
+                        </div>
+                        </a>
+
+                        <!-- ---------- Review 3 ---------- -->
+                        <a href="https://share.google/mjP2ve6NlZWIyfTEE" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="gr-card">
+                            <div class="gr-header">
+                                <img src="{{ url_for('static', filename='img/reviewer3.png') }}" class="gr-avatar ">
+                                <div>
+                                    <div class="gr-name">gunja singhal</div>
+                                    <div class="gr-rating">★★★★★</div>
+                                </div>
+                            </div>
+
+                            <img class="gr-photo" src="{{ url_for('static', filename='img/review3.jpg') }}">
+
+                            <p class="gr-text">
+                                The team at (MY VACATION AFFAIR) truly understands the essence of luxury travel.
+                            </p>
+                        </div>
+                        </a>
+
+                        <!-- ---------- Review 4 ---------- -->
+                        <a href="https://share.google/C8sKFB8D47cCYBwuj" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="gr-card">
+                            <div class="gr-header">
+                                <img src="{{ url_for('static', filename='img/reviewer4.png') }}" class="gr-avatar">
+                                <div>
+                                    <div class="gr-name">gunja singhal</div>
+                                    <div class="gr-rating">★★★★★</div>
+                                </div>
+                            </div>
+
+                            <img class="gr-photo" src="{{ url_for('static', filename='img/review4.jpg') }}">
+
+                            <p class="gr-text">
+                                From the stunning landscapes to the warm hospitality, every moment was unforgettable.
+                            </p>
+                        </div>
+                        </a>
+
+                        <!-- ---------- Review 5 (4 Stars) ---------- -->
+                        <a href="https://share.google/mjP2ve6NlZWIyfTEE" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="gr-card">
+                            <div class="gr-header">
+                                <img src="{{ url_for('static', filename='img/reviewer5.png') }}" class="gr-avatar">
+                                <div>
+                                    <div class="gr-name">shil sidhu singh</div>
+                                    <div class="gr-rating">★★★★★</div>
+                                </div>
+                            </div>
+
+                            <img class="gr-photo" src="{{ url_for('static', filename='img/review5.jpg') }}" style="object-position: 0% 20%;">
+
+                            <p class="gr-text">
+                                Excellent experience with MyVacationAffair, proper guidance end to end coordination.
+                            </p>
+                        </div>
+                        </a>
+                        
+                        <!-- Auto-clones (empty) -->
+                        <div class="gr-card clone"></div>
+                        <div class="gr-card clone"></div>
+                        <div class="gr-card clone"></div>
+                        <div class="gr-card clone"></div>
+                        <div class="gr-card clone"></div>
+                        <div class="gr-card clone"></div>
+
+                    </div>
+                </div>
+        </div>
         <!-- Contact Section -->
         <section class="contact-section">
-            <div class="contact-container">
-                <div class="contact-header">
-                    <h2>Get in Touch</h2>
-                    <p>Ready to plan your next adventure? We'd love to hear from you!</p>
+            <footer class="site-footer">
+                <div class="footer-container">
+
+            <!-- Column 1 -->
+                <div class="footer-column">
+                    <h3>My vacation affair</h3>
+                    <a href="https://www.google.com/search?sca_esv=38c9cbf692374296&hl=en-IN&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E0bxmJJ2d2IIyOsCbok9Apaw_rta-m7N9kbr2PEFX_nGADoQ2Ksiq_hYU0i9Bv5JIRSUZU1gU0VYZXjSdbyu3Msaryrv5Cymob9bBhzsuQbR3mZrPw%3D%3D&q=MyVacationAffair+Reviews&sa=X&ved=2ahUKEwjs6L3RhauRAxXo8TgGHdB4CeoQ0bkNegQIKRAD&biw=1176&bih=666&dpr=2" class="footer-link">Testimonials</a>
+                    <a href="https://www.knowyourgst.com/gst-number-search/myvacationaffaircom-07AQVPB5088J1Z9/" class="footer-link">KnowYourGST</a>
+                    <a href="https://maps.app.goo.gl/vSJmfvkHowe2BvGR9" class="footer-link">Sitemap</a>
+                    <a href="https://wa.me/+917722919317" class="footer-link">Contact Us</a>
                 </div>
-                
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <p>hello@mytravelaffairs.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-details">
-                                <h3>Phone</h3>
-                                <p>+91 7722919317</p>
-                            </div>
-                        </div>
-                        
-                        <div class="socials">
-                            <h3>Follow Us</h3>
-                            <div class="social-icons">
-                                <a href="#" class="social-icon">📘</a>
-                                <a href="#" class="social-icon">📷</a>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- Column 2 -->
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <a href="#" class="footer-link">Frequently asked questions</a>
+                    <a href="#" class="footer-link">Terms & Conditions</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Cancellations</a>
                     
-                    <div class="contact-form">
-                        <h3>Chat with us on WhatsApp</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <input type="text" name="WhatsApp no." placeholder="Contact number" required>
-                            </div>
+                </div>
 
-                            <!-- Hidden fields to track country & category -->
-                            <input type="hidden" name="country" id="countryInput">
-                            <input type="hidden" name="category" id="categoryInput">
-
-                            <button type="submit" class="submit-btn">Send Message</button>
-                        </form>
+            <!-- Column 3 -->
+                <div class="footer-column">
+                    <h3>Talk to us</h3>
+                    <div class="footer-item">
+                        📧 <a href="mailto:planners@pickyourtrail.com" class="footer-link">
+                            contact@myvacationaffair.com
+                        </a>
+                    </div>
+                    <div class="footer-item">
+                        📱 <a href="tel:++916260969096" class="footer-link">
+                            +91 6260969096
+                        </a>
+                    </div>
+                    <div class="footer-item">
+                        💬 <a href="https://wa.me/+917722919317" class="footer-link">
+                            +91 7722919317
+                        </a>
+                    </div>
+                    <div class="footer-item">
+                        📩 <a href="mailto:careers@pickyourtrail.com" class="footer-link">
+                            careers@myvacationaffair.com
+                        </a>
                     </div>
                 </div>
+
+            <!-- Column 4 -->
+                <div class="footer-column">
+                    <h3>Social</h3>
+                    <a href="https://www.facebook.com/profile.php?id=100082998653904&locale=el_GR" class="footer-link">Facebook</a>
+                    <a href="https://www.instagram.com/myvacationaffair/" class="footer-link">Instagram</a>
+                    <a href="https://www.linkedin.com/in/my-vacation-affair-delhi-b78205374/" class="footer-link">LinkedIn</a>
+                    <a href="https://www.threads.com/@myvacationaffair" class="footer-link">Threads</a>
             </div>
+        </div>
+    </footer>
         </section>
         <!-- Sign-In Popup -->
         <div id="signinModal" class="modal">
@@ -610,6 +702,51 @@
                 const tileWidth = container.querySelector('.scroll-tile').offsetWidth + 16;
                 container.scrollBy({ left: direction * tileWidth, behavior: 'smooth' });
             }
+        </script>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.querySelector(".gr-track");
+            const cards = Array.from(track.children).filter(c => !c.classList.contains("clone"));
+
+            // Step 1: Remove existing empty clones
+            document.querySelectorAll(".gr-card.clone").forEach(cl => cl.remove());
+
+            // Step 2: Clone the full set once for smooth loop
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add("clone");
+                track.appendChild(clone);
+            });
+
+            let x = 0;
+            const speed = 0.4;  // adjust speed here
+            const gap = 20;     // your CSS gap
+
+            function tick() {
+                x -= speed;
+                track.style.transform = `translateX(${x}px)`;
+
+                const first = track.children[0];
+                const cardWidth = first.offsetWidth + gap;
+
+                // When first card leaves screen → move it to end
+                if (Math.abs(x) >= cardWidth) {
+                    x += cardWidth;
+                    track.appendChild(first);
+                }
+
+                requestAnimationFrame(tick);
+            }
+
+            tick();
+        });
+        </script>
+        <script>
+            const vid = document.getElementById("heroVideo");
+
+            vid.addEventListener("loadedmetadata", () => {
+                vid.currentTime = 8;   // skip 5 seconds
+            });
         </script>
     </body>
 </html>
